@@ -1,11 +1,11 @@
 
 import './App.css';
-import ResetPassword from './component/JSXfiles/ResetPassword';
+import Login from './component/JSXfiles/Login';
 
 function App() {
   return (
     <div className="App">
-<ResetPassword/>
+<Login/>
     </div>
   );
 }

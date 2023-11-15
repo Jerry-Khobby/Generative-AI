@@ -1,11 +1,11 @@
 
 import './App.css';
-import AccessDeniedPage from './component/JSXfiles/Accessdenial';
+import VerificationComponent from './component/JSXfiles/Authentication';
 
 function App() {
   return (
     <div className="App">
-<AccessDeniedPage/>
+<VerificationComponent/>
     </div>
   );
 }

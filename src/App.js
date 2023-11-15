@@ -1,11 +1,11 @@
 
 import './App.css';
-import RegisterPage from './component/JSXfiles/Register';
+import Plans from './component/JSXfiles/Plans';
 
 function App() {
   return (
     <div className="App">
-    <RegisterPage/>
+    <Plans/>
     </div>
   );
 }

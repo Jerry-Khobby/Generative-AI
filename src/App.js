@@ -1,11 +1,11 @@
 
 import './App.css';
-import Login from './component/JSXfiles/Login';
+import AccessDeniedPage from './component/JSXfiles/Accessdenial';
 
 function App() {
   return (
     <div className="App">
-<Login/>
+<AccessDeniedPage/>
     </div>
   );
 }

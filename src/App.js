@@ -1,11 +1,11 @@
 
 import './App.css';
-import VerificationComponent from './component/JSXfiles/Authentication';
+import ChatPage from './component/JSXfiles/Chat';
 
 function App() {
   return (
     <div className="App">
-<VerificationComponent/>
+<ChatPage/>
     </div>
   );
 }

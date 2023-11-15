@@ -1,11 +1,11 @@
 
 import './App.css';
-import Plans from './component/JSXfiles/Plans';
+import ResetPassword from './component/JSXfiles/ResetPassword';
 
 function App() {
   return (
     <div className="App">
-    <Plans/>
+<ResetPassword/>
     </div>
   );
 }

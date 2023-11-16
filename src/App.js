@@ -1,11 +1,11 @@
 
 import './App.css';
-import ImageGenerationApp from './component/JSXfiles/Image';
+import ChatPage from './component/JSXfiles/Chat';
 
 function App() {
   return (
     <div className="App">
-<ImageGenerationApp/>
+<ChatPage/>
     </div>
   );
 }

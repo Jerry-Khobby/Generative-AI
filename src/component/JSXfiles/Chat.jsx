@@ -179,11 +179,9 @@ const ChatPage=()=>{
     <link href="dist/css/tabler-payments.min.css" rel="stylesheet"/>
     <link href="dist/css/tabler-vendors.min.css" rel="stylesheet"/>
     <link href="dist/css/demo.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
 
-<script src="dist/libs/apexcharts/dist/apexcharts.min.js"></script>
-<script src="dist/js/tabler.min.js"></script>
-<script src="dist/js/demo.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
   </head>
   <body>
 
@@ -279,9 +277,12 @@ const ChatPage=()=>{
         </div>
       </div>
     </header>
+
+
+
 <div className="page-wrapper">
-<div className="container-xl smallads">
-      {/* Page title */}
+
+    <div className="container-xl smallads">
       {/* Page title */}
       <div className="page-header d-print-none">
         <div className="row align-items-center">
@@ -290,6 +291,7 @@ const ChatPage=()=>{
             <div className="page-pretitle advertise">
               <a>Sponsored</a>
             </div>
+
             <a className="coca-cola" target="_blank" href="https://alle-ai.com">
               Alle-AI: All-in-one AI platform
               <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-external-link" width="10" height="10" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -300,7 +302,6 @@ const ChatPage=()=>{
               </svg>
             </a>
           </div>
-          {/* Page title actions */}
           <div className="col-auto ms-auto d-print-none">
             <div className="btn-list">
               <span className="d-none d-sm-inline">
@@ -310,7 +311,7 @@ const ChatPage=()=>{
               </span>
               <a href="#" onClick={() => window.location.reload(true)} className="btn btn-green d-none d-sm-inline-block">
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <line x1="12" y1="5" x2="12" y2="19" />
                   <line x1="5" y1="12" x2="19" y2="12" />
                 </svg>
@@ -329,14 +330,12 @@ const ChatPage=()=>{
       </div>
 
       <div className="page-header d-print-none">
-        {/* Begining of chatframe */}
         <div className="card cardmobilefix">
           <div className="card-header cardheadermobilefix">
             <h3 className="card-title" id="chat-title">New Chat</h3>
           </div>
-
           <div className="card chatbodymobilefix">
-            {/* 1 */}
+            {/* Chat windows */}
             <div className="card-body-scrollable card-body-scrollable-shadow align-items-center" id="welcome-chat-window">
               <div className="card-body text-center py-4 p-sm-5">
                 <img src="./static/illustrations/undraw_sign_in_e6hj.svg" height="128" className="mb-n2" alt="" />
@@ -344,16 +343,12 @@ const ChatPage=()=>{
                 <p className="text-muted">Experience the power of OpenAI's ChatGPT, Google's Bard and Anthropic's Claude etc. all in one place! <br /> Simultaneously interact, compare and harness their combined potential.</p>
               </div>
             </div>
-
-            {/* 2 */}
             <div className="card-body-scrollable card-body-scrollable-shadow align-items-center" id="loading-chat-window">
               <div className="card-body text-center py-4 p-sm-5">
                 <img src="./static/illustrations/undraw_sign_in_e6hj.svg" height="128" className="mb-n2" alt="" />
                 <h1 className="mt-5">Loading messages. Please wait...</h1>
               </div>
             </div>
-
-            {/* 3 */}
             <div className="card-body-scrollable card-body-scrollable-shadow" id="chat-window">
               {/* Chat content appear here */}
             </div>
@@ -363,91 +358,65 @@ const ChatPage=()=>{
     </div>
 
     <div style={{ position: 'fixed', left: 0, bottom: 0, width: '100%', textAlign: 'center' }}>
-      {/* Prompt Input */}
-      <div className="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
-        <form action="" method="post" name="chat-form" id="chat-form">
-          {/* inputfix class added to the div below */}
-          <div className="input-icon inputfix" style={{ height: '50px' }} id="active-input-prompt">
-            <input
-              id="prompt_input"
-              name="prompt_input"
-              type="text"
-              className="form-control"
-              style={{ height: '50px', margin: 'auto' }}
-              placeholder="Type your prompt here…"
-              autoComplete="off"
-            />
 
-            <a href="" onClick={sendMessage} className="input-icon-addon" aria-label="Button" style={{ pointerEvents: 'visible' }}>
-              {/* Download SVG icon from http://tabler-icons.io/i/send */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-                <path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a0.55 .55 0 0 1 0 -1l18 -6.5" />
-              </svg>
-            </a>
-          </div>
-        </form>
+{/* Prompt Input */}
+<div className="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
+  <form action="" method="post" name="chat-form" id="chat-form">
+    <div className="input-icon inputfix" style={{ height: '50px!important' }} id="active-input-prompt">
+      <input id="prompt_input" name="prompt_input" type="text" className="form-control" style={{ height: '50px!important', margin: 'auto!important' }} placeholder="Type your prompt here…" autoComplete="off" />
+      <a href="" onClick={() => sendMessage()} className="input-icon-addon" aria-label="Button" style={{ pointerEvents: 'visible!important' }}>
+        <svg xmlns="http://www.w3.org/2000/svg" className="icon" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <line x1="10" y1="14" x2="21" y2="3" />
+          <path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a0.55 .55 0 0 1 0 -1l18 -6.5" />
+        </svg>
+      </a>
+    </div>
 
-        <div className="input-icon inputfix" style={{ height: '50px', margin: 'auto' }} id="loading-input-prompt">
-          <div className="input-icon mb-3">
-            <input type="text" className="form-control" readOnly style={{ height: '50px' }} placeholder="Loading…" />
-            <span className="input-icon-addon">
-              <div className="spinner-border spinner-border-sm text-muted" role="status"></div>
-            </span>
-          </div>
+  </form>
+
+  <div className="input-icon inputfix" style={{ height: '50px!important', margin: 'auto!important' }} id="loading-input-prompt">
+
+    <div className="input-icon mb-3">
+      <input type="text" className="form-control" readOnly style={{ height: '50px!important' }} placeholder="Loading…" />
+      <span className="input-icon-addon">
+        <div className="spinner-border spinner-border-sm text-muted" role="status"></div>
+      </span>
+    </div>
+
+  </div>
+
+</div>
+
+{/* End Prompt Input */}
+
+{/* Footer */}
+<footer className="footer footer-transparent d-print-none footerfix">
+  <small>
+    <div className="container-xl">
+      <div className="row text-center align-items-center flex-row-reverse">
+        <div className="col-lg-auto ms-lg-auto">
+          <ul className="list-inline list-inline-dots mb-0 mobilefix">
+            <li className="list-inline-item">v1.0.0-beta</li>
+            <li className="list-inline-item"><a href="terms.html" target="_blank" className="link-secondary" rel="noopener">Terms of Service</a></li>
+            <li className="list-inline-item"><a href="privacy-policy" target="_blank" className="link-secondary" rel="noopener">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div className="col-12 col-lg-auto mt-3 mt-lg-0">
+          <ul className="list-inline list-inline-dots mb-0">
+            <li className="list-inline-item">
+              Copyright &copy; <script>document.write(new Date().getFullYear());</script>
+              <a href="https://alle-ai.com" className="link-secondary">Alle-AI</a>.
+              All rights reserved.
+            </li>
+          </ul>
         </div>
       </div>
-      {/* End Prompt Input */}
-
-      {/* Footer */}
-      <footer className="footer footer-transparent d-print-none footerfix">
-        <small>
-          <div className="container-xl">
-            <div className="row text-center align-items-center flex-row-reverse">
-              <div className="col-lg-auto ms-lg-auto">
-                {/* remove on mobile -mobilefix */}
-                <ul className="list-inline list-inline-dots mb-0 mobilefix">
-                  <li className="list-inline-item">v1.0.0-beta</li>
-                  <li className="list-inline-item">
-                    <a href="terms.html" target="_blank" className="link-secondary" rel="noopener">
-                      Terms of Service
-                    </a>
-                  </li>
-                  <li className="list-inline-item">
-                    <a href="privacy-policy" target="_blank" className="link-secondary" rel="noopener">
-                      Privacy Policy
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className="col-12 col-lg-auto mt-3 mt-lg-0">
-                <ul className="list-inline list-inline-dots mb-0">
-                  <li className="list-inline-item">
-                    Copyright &copy; <script>document.write(new Date().getFullYear());</script>
-                    <a href="https://alle-ai.com" className="link-secondary">
-                      Alle-AI
-                    </a>
-                    . All rights reserved.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </small>
-      </footer>
     </div>
+  </small>
+</footer>
+
+</div>
 
     <div className="modal modal-blur fade" id="general-feedback-modal" tabIndex="-1" role="dialog" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered" role="document">
@@ -481,6 +450,9 @@ const ChatPage=()=>{
         </div>
       </div>
     </div>
+
+
+
     <div className="modal modal-blur fade" id="modal-simple" tabIndex="-1" role="dialog" aria-hidden="true">
       <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content">
@@ -506,8 +478,14 @@ const ChatPage=()=>{
         </div>
       </div>
     </div>
+
+
 </div>
 </div>
+
+
+
+
 
 <div className="modal modal-blur fade" id="modal-report" tabIndex="-1" role="dialog" aria-hidden="true">
         <div className="modal-dialog modal-lg" role="document">
@@ -569,11 +547,102 @@ const ChatPage=()=>{
         </div>
       </div>
 
+      <style>
+        {`
+          /* mobile fix dan */
+          .footerfix {
+            padding: 0;
+            color: #626976;
+          }
+          .coca-cola {
+            font-size: 10px;
+          }
+          .advertise {
+            font-size: 8px;
+          }
+          .cardmobilefix {
+            margin-top: auto;
+          }
+          .cardheadermobilefix {
+            height: auto;
+            font-size: auto;
+          }
+          .card-title {
+            font-size: auto;
+            margin: auto!important;
+          }
+          .chatbodymobilefix {
+            height: calc(100vh - 340px);
+          }
+          .inputfix {
+            width: 700px;
+            margin: auto;
+          }
+
+          @media (max-width: 600px) {
+            .inputfix {
+              width: 90%;
+            }
+            .card-title {
+              margin-top: -10px ;
+              font-size: 11px;
+            }
+            .chatbodymobilefix {
+              height: calc(100vh - 260px);
+            }
+            .cardmobilefix {
+              margin-top: -22px;
+            }
+            .cardheadermobilefix {
+              height: 10px!important;
+            }
+            .footerfix {
+              padding-top: 0;
+              margin-top: -10px;
+              padding-bottom: 5px;
+              font-size: 10px;
+            }
+            .smallads {
+              margin-top: -22px;
+              font-size: 11px;
+            }
+            .coca-cola {
+              font-size: 8px;
+            }
+            .advertise {
+              font-size: 5px;
+              margin-bottom: -10px;
+            }
+          }
+
+          @media (min-width: 1024px) {
+            .footerfix {
+              padding: 2rem 0;
+            }
+          }
+
+          .mobilefix {
+            display: none;
+          }
+
+          @media (min-width: 1024px) {
+            .mobilefix {
+              display: block;
+            }
+          }
+        `}
+      </style>
 
 
 
 
 
+
+
+      <script src="./dist/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="./dist/js/tabler.min.js"></script>
+<script src="./dist/js/demo.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
   </body>
   </html>
     )

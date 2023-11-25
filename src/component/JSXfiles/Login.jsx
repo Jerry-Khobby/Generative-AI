@@ -1,7 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 const Login = () => {
   const [passwordType, setPasswordType] = useState('password');
+
+  useEffect(() => {
+    // Load Google Sign-In client script
+    const script = document.createElement('script');
+    script.src = 'https://accounts.google.com/gsi/client';
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+
+    return () => {
+      // Clean up the script when the component is unmounted
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const showHidePassword = () => {
     setPasswordType((prevType) => (prevType === 'password' ? 'text' : 'password'));
@@ -40,6 +54,7 @@ const Login = () => {
     // Run Ajax function
     sendRequest();
   };
+
 
   return (
     <html lang="en">
@@ -118,7 +133,7 @@ const Login = () => {
           <div className="hr-text">OR</div>
 
           <form className="card card-body card-md" action="" method="post">
-            <input type="hidden" name="google-auth" value="true" />
+            <input type="hidden" name="google-oauth" value="true" />
 
             <div className="card-body center-elements-inside">
               {/* Div to display Google signin error */}

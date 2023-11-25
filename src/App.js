@@ -9,7 +9,7 @@ import VerificationPage from './component/JSXfiles/Authentication';
 import ImageGenerationApp from './component/JSXfiles/Image';
 import ChatPage from './component/JSXfiles/Chat';
 import {BrowserRouter,Route,Routes} from "react-router-dom";
-
+//AIzaSyAqLQ39-x0HZ3Puaa3_ufXZHpTW2BdUrtQ
 function App() {
   return (
     <div className="App">

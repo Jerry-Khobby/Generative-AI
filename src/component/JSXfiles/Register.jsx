@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState,useEffect} from 'react';
 
 const RegisterPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -6,7 +6,19 @@ const RegisterPage = () => {
 
 
 
-
+    useEffect(() => {
+      // Load Google Sign-In client script
+      const script = document.createElement('script');
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+  
+      return () => {
+        // Clean up the script when the component is unmounted
+        document.head.removeChild(script);
+      };
+    }, []);
 
 
   

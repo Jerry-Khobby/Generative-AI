@@ -1,4 +1,5 @@
 import React, { useState,useEffect} from 'react';
+import {Link} from "react-router-dom";
 
 const RegisterPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -235,7 +236,7 @@ const RegisterPage = () => {
           </div>
         </form>
         <div class="text-center text-muted mt-3">
-          Already have an account? <a href="login.html" tabindex="-1"><u>Login</u></a>
+          Already have an account? <Link to="/login" tabindex="-1"><u>Login</u></Link>
         </div>
         </div>
         </div>

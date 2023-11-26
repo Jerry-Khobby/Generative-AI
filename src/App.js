@@ -10,7 +10,13 @@ import ImageGenerationApp from './component/JSXfiles/Image';
 import ChatPage from './component/JSXfiles/Chat';
 import {BrowserRouter,Route,Routes} from "react-router-dom";
 //AIzaSyAqLQ39-x0HZ3Puaa3_ufXZHpTW2BdUrtQ
+import axios from "axios";
+
+
 function App() {
+  // this is for the server side only
+  axios.defaults.baseURL = 'http://localhost:5000';
+  axios.defaults.withCredentials = true;  
   return (
     <div className="App">
      <BrowserRouter>

@@ -52,19 +52,24 @@ const RegisterPage = () => {
       setErrorMessage('Passwords do not match');
       return;
     }
+    if(!formData.firstname||!formData.lastname||!formData.email||!formData.password||!formData.confirmPassword){
+      setErrorMessage('Fill in the all the fields below');
+      return;
+    }
     try{
-      const response = await axios.post('YOUR_BACKEND_API_ENDPOINT', {
+      const response = await axios.post('http://localhost:5000/register', {
         firstname: formData.firstname,
         lastname: formData.lastname,
         email: formData.email,
         password: formData.password,
       });
 
+      
+
       // Handle the response data here
       console.log('Registration successful:', response.data);
-
-      // Reset error message
-      setErrorMessage('');
+      setErrorMessage('Your account has been registered successfully');
+      window.location.href='/login';
 
 
     }catch(error){
@@ -81,6 +86,10 @@ const RegisterPage = () => {
       if (error.response.status === 403) {
         // Customize the error message for the 403 status code
         setErrorMessage('Registration not allowed. Please check your input.');
+      }
+      else if(error.response.status===409){
+        setErrorMessage('Email address is already in use');
+        window.location.href='/login';
       }
     } else {
       // Set a generic error message if there are no specific messages from the backend
@@ -197,7 +206,7 @@ const RegisterPage = () => {
             </div>
             <div class="mb-3">
             <div className="input-group input-group-flat">
-                  <input  id="password"   type={passwordType} name="confirmPassword" className="form-control" placeholder="Confirm password" autoComplete="off" value={formData.confirmPassword}
+                  <input  id="confirmPassword"   type={passwordType} name="confirmPassword" className="form-control" placeholder="Confirm password" autoComplete="off" value={formData.confirmPassword}
                   onChange={handleInputChange} // Add onChange handler
                   />
                 </div>

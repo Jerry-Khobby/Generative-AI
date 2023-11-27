@@ -15,7 +15,7 @@ import axios from "axios";
 
 function App() {
   // this is for the server side only
-  axios.defaults.baseURL = 'http://localhost:5000';
+  axios.defaults.baseURL = 'http://localhost:5000/';
   axios.defaults.withCredentials = true;  
   return (
     <div className="App">

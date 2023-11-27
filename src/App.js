@@ -27,7 +27,7 @@ function App() {
       <Route path="/terms" element={<TermPage/>}/>
       <Route path="/imageschat" element={<ImageGenerationApp/>}/>
       <Route path="/verfications" element={<VerificationPage/>}/>
-    <Route path="resetpassword" element={<ResetPassword/>}/>
+    <Route path="/resetpassword" element={<ResetPassword/>}/>
     <Route path="/accessdenied" element={<AccessDeniedPage/>}/>
      </Routes>
      </BrowserRouter>

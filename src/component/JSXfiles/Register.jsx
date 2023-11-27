@@ -68,8 +68,11 @@ const RegisterPage = () => {
 
       // Handle the response data here
       console.log('Registration successful:', response.data);
-      setErrorMessage('Your account has been registered successfully');
-      window.location.href='/login';
+      setErrorMessage('Your account has been registered successfully now login');
+         // Set a timeout to wait for a certain duration before redirecting to the login screen
+    setTimeout(() => {
+      window.location.href = '/login';
+    }, 5000); // Adjust the time (in milliseconds) as needed
 
 
     }catch(error){
@@ -89,7 +92,6 @@ const RegisterPage = () => {
       }
       else if(error.response.status===409){
         setErrorMessage('Email address is already in use');
-        window.location.href='/login';
       }
     } else {
       // Set a generic error message if there are no specific messages from the backend

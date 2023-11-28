@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import ApexCharts from 'react-apexcharts';
 import showdown from 'showdown';
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 
 // ... (the rest of your imports and code)
@@ -173,15 +174,19 @@ const ChatPage=()=>{
       const [token, setToken] = useState(null);
       
       useEffect(() => {
+          // Retrieve the token from localStorage
+    const storedToken = localStorage.getItem('token');
         const fetchHomepageData = async () => {
           try {
             const response = await axios.get('http://localhost:5000/homepage', {
               withCredentials: true, // Send cookies with the request
+              headers: {
+                Authorization: `Bearer ${storedToken}`, // Include the token in the request headers
+              },
             });
       
-            const { user, token } = response.data;
+            const { user } = response.data;
             setUser(user);
-            setToken(token);
           } catch (error) {
             console.error('Error fetching homepage data:', error.response);
             if (error.response.status === 401) {
@@ -198,6 +203,17 @@ const ChatPage=()=>{
       
         fetchHomepageData();
       }, []); // Empty dependency array means this effect will run once, similar to componentDidMount
+
+      const handleLogout = () => {
+        // Clear the token from localStorage
+        localStorage.removeItem('token');
+    
+        // Clear the token from state
+        setToken(null);
+    
+        // Redirect the user to the login page
+        window.location.href = '/login';
+      };
     
     return(
         <html lang="en">
@@ -273,7 +289,7 @@ const ChatPage=()=>{
               <div className="dropdown-divider"></div>
               <a href="#" className="dropdown-item">Settings</a>
               <a href="terms.html" target="_blank" className="dropdown-item">Terms of Service</a>
-              <a href="login.html" className="dropdown-item text-warning">Logout</a>
+              <Link to="." className="dropdown-item text-warning" onClick={handleLogout}>Logout</Link>
             </div>
           </div>
         </div>

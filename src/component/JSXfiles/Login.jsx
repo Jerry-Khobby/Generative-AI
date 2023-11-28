@@ -57,7 +57,7 @@ const Login = () => {
 
       setTimeout(() => {
         window.location.href = '/';
-      }, 3000); // Adjust the time (in milliseconds) as needed
+      }, 2000); // Adjust the time (in milliseconds) as needed
 
     }catch(error){
 // Handle errors, e.g., display an error message to the user

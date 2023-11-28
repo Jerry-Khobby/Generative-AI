@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import ApexCharts from 'react-apexcharts';
 import showdown from 'showdown';
+import axios from "axios";
+
 
 // ... (the rest of your imports and code)
 
@@ -163,8 +165,39 @@ const ChatPage=()=>{
         return () => {
           // Cleanup logic if needed
         };
-      }, []); 
+      }, []);
       
+      
+      const [user, setUser] = useState(null);
+      const [error, setError] = useState(null);
+      const [token, setToken] = useState(null);
+      
+      useEffect(() => {
+        const fetchHomepageData = async () => {
+          try {
+            const response = await axios.get('http://localhost:5000/homepage', {
+              withCredentials: true, // Send cookies with the request
+            });
+      
+            const { user, token } = response.data;
+            setUser(user);
+            setToken(token);
+          } catch (error) {
+            console.error('Error fetching homepage data:', error.response);
+            if (error.response.status === 401) {
+              setError('Your token has expired. Please login again.');
+            } else {
+              setError(error.response.data.error);
+            }
+      
+            setTimeout(() => {
+              window.location.href = '/login';
+            }, 2000);
+          }
+        };
+      
+        fetchHomepageData();
+      }, []); // Empty dependency array means this effect will run once, similar to componentDidMount
     
     return(
         <html lang="en">
@@ -184,9 +217,7 @@ const ChatPage=()=>{
 
   </head>
   <body>
-
 <div className="wrapper">
-
 {/** this is the header   */}
 <header className="navbar navbar-expand-md navbar-light d-print-none">
       <div className="container-xl">
@@ -221,10 +252,17 @@ const ChatPage=()=>{
           <div className="nav-item dropdown">
             <a href="#" className="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
               <span className="avatar avatar-sm" style={{ background: '#ec407a', scale: 0.99 }}>
-                <span style={{ color: 'white' }}>DA</span>
+               {
+                user?.firstname &&(
+                  <span style={{ color: 'white' }}>{user.firstname?.charAt(0).toUpperCase()}{user.lastname?.charAt(0).toUpperCase()}</span>
+                )}
               </span>
               <div className="d-none d-xl-block ps-2">
-                <div>Dickson Agyei</div>
+              {user?.firstname && (
+        <>
+          <div>{user.firstname} {user.lastname}</div>
+        </>
+      )}
                 <div className="mt-1 small text-muted">Premium</div>
               </div>
             </a>
@@ -281,7 +319,6 @@ const ChatPage=()=>{
 
 
 <div className="page-wrapper">
-
     <div className="container-xl smallads">
       {/* Page title */}
       <div className="page-header d-print-none">
@@ -639,10 +676,15 @@ const ChatPage=()=>{
 
 
 
-      <script src="./dist/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="./dist/libs/apexcharts/dist/apexcharts.min.js"></script>
 <script src="./dist/js/tabler.min.js"></script>
 <script src="./dist/js/demo.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
+
+  </body>
+  <body>
+
   </body>
   </html>
     )
